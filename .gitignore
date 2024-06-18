@@ -2,17 +2,14 @@
 frontend/node_modules/
 frontend/build/
 frontend/public/
-frontend/.env
 frontend/.DS_Store
-frontend/.eslintcache
 frontend/npm-debug.log
 
 # Go
 backend/bin/
 backend/pkg/
-backend/.env
 backend/.DS_Store
-
+backend/api
 
 # macOS
 .DS_Store

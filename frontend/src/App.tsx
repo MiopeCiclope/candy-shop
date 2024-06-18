@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    fetch('/status').then(response => response.text()).then(data => console.log(data))
+    fetch('/api/status').then(response => response.text()).then(data => console.log(data))
   }, [])
 
   return (
