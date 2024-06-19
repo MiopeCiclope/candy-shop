@@ -12,5 +12,5 @@ RUN apk --no-cache add ca-certificates make
 WORKDIR /root/
 COPY --from=builder /app .
 
-EXPOSE 8080
+EXPOSE ${PORT}
 CMD ["make", "run"]

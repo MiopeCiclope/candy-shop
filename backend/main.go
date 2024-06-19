@@ -1,15 +1,25 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+	"github.com/miopeciclope/candy-shop/backend/router"
 )
 
 func main() {
-	router := gin.Default()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
 
-	router.GET("/api/status", func(c *gin.Context) {
-		c.String(200, "running!!!")
-	})
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatalf("PORT environment variable not set")
+	}
 
-	router.Run(":8080")
+	r := router.SetupRouter()
+
+	r.Run(":" + port)
 }
