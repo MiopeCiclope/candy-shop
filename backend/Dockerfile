@@ -5,6 +5,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
+RUN make docker-test
 RUN make build-linux
 
 FROM alpine:latest

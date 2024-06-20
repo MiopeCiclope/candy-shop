@@ -6,6 +6,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/miopeciclope/candy-shop/backend/router"
+	. "github.com/miopeciclope/candy-shop/backend/services"
 )
 
 func main() {
@@ -19,7 +20,8 @@ func main() {
 		log.Fatalf("PORT environment variable not set")
 	}
 
-	r := router.SetupRouter()
+	candyService := &CandyService{}
+	r := router.SetupRouter(candyService)
 
 	r.Run(":" + port)
 }
