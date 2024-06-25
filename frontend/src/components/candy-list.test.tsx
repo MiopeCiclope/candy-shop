@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { Candy } from '../models/candy-model';
 import { Response } from '../models/response-model';
 import { getAllCandy } from '../utils/api-utils';
+import { render } from '../utils/test-utils';
 import CandyList from './candy-list';
 
 jest.mock('../utils/api-utils', () => ({

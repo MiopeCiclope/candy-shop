@@ -3,11 +3,16 @@ import { Candy } from "../models/candy-model"
 import { getAllCandy } from "../utils/api-utils"
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 const CandyList = () => {
   const [candyList, setCandyList] = useState<Candy[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const { data, loading, error } = useSelector((state: RootState) => state.candyReducer);
+  console.log(data, loading, error)
 
   useEffect(() => {
     setIsLoading(true)
