@@ -20,7 +20,9 @@ export const fetchData = (): ThunkAction<void, RootState, unknown, CandyActions>
 
     try {
       const response = await getAllCandy()
-      dispatch({ type: FETCH_DATA_SUCCESS, payload: response.data });
+      dispatch({
+        type: FETCH_DATA_SUCCESS, payload: response.data
+      });
     } catch (error: any) {
       dispatch({ type: FETCH_DATA_FAILURE, error: error.message });
     }

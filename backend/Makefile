@@ -3,7 +3,12 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 TEST_DIR=./tests
 GOTEST=$(GOCMD) test ${TEST_DIR}/...
+GOINSTALL=$(GOCMD) mod download
 OUTPUT=api
+
+install:
+	@echo "Building $(OUTPUT)..."
+	$(GOINSTALL)
 
 build:
 	@echo "Building $(OUTPUT)..."
