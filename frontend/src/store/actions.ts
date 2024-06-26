@@ -1,10 +1,10 @@
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction } from '@reduxjs/toolkit';
 import { Candy } from '../models/candy-model';
 import { Response } from '../models/response-model';
 import { CandyActions, RootState } from './store';
 import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from './store-types';
 
-const getAllCandy = (): Promise<Response<Candy[]>> =>
+export const getAllCandy = (): Promise<Response<Candy[]>> =>
   fetch('/api/candy')
     .then(response => response.json())
     .then(response => {

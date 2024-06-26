@@ -1,39 +1,38 @@
-import { screen, waitFor } from '@testing-library/react';
-import { Candy } from '../models/candy-model';
-import { Response } from '../models/response-model';
-import { getAllCandy } from '../utils/api-utils';
+import { screen, waitFor } from "@testing-library/react"
+import { delay, http, HttpResponse } from 'msw';
+import { setupServer } from 'msw/node';
 import { render } from '../utils/test-utils';
+
 import CandyList from './candy-list';
 
-jest.mock('../utils/api-utils', () => ({
-  getAllCandy: jest.fn(),
-}));
-
 describe('CandyList Component', () => {
-  let mockResponse: Response<Candy[]>;
-
-  beforeEach(() => {
-    mockResponse = {
-      isSuccessful: true,
-      data: [
-        {
+  const handlers = [
+    http.get('/api/candy', async () => {
+      await delay(150)
+      return HttpResponse.json({
+        isSucessful: true,
+        data: [{
           name: "candyTest",
           candy: "Dadinho",
           eaten: 5,
           date: "1994-02-15",
-        } as Candy,
-        {
+        }, {
           name: "candyTest2",
           candy: "Batom",
           eaten: 5,
           date: "1994-02-15",
-        } as Candy
-      ],
-    };
-  });
+        }
+        ]
+      })
+    })
+  ]
+
+  const server = setupServer(...handlers)
+  beforeAll(() => server.listen())
+  afterEach(() => server.resetHandlers())
+  afterAll(() => server.close())
 
   test('hide loading', async () => {
-    (getAllCandy as jest.Mock).mockResolvedValue(mockResponse);
     render(<CandyList />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
@@ -45,7 +44,6 @@ describe('CandyList Component', () => {
   });
 
   test('fetches candy', async () => {
-    (getAllCandy as jest.Mock).mockResolvedValue(mockResponse);
     render(<CandyList />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
@@ -56,8 +54,8 @@ describe('CandyList Component', () => {
   });
 
   test('display error message', async () => {
-    const errorMessage = 'Error fetching candy';
-    (getAllCandy as jest.Mock).mockRejectedValue(new Error(errorMessage));
+    //const errorMessage = 'Error fetching candy';
+    //(getAllCandy as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
     render(<CandyList />);
 

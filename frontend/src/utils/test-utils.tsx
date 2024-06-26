@@ -12,7 +12,6 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 function render(
   ui: ReactElement,
   {
-    preloadedState: initialState,
     store = configureStore({ reducer: rootReducer }),
     ...renderOptions
   }: ExtendedRenderOptions = {}
