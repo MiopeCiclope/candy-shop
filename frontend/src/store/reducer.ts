@@ -5,19 +5,19 @@ export const CandyReducer = (initialState: any) => (state = initialState, action
   switch (action.type) {
     case FETCH_DATA_REQUEST:
       return {
-        ...state,
+        data: state.data,
         loading: true,
         error: null,
       };
     case FETCH_DATA_SUCCESS:
       return {
-        ...state,
+        error: null,
         loading: false,
         data: action.payload,
       };
     case FETCH_DATA_FAILURE:
       return {
-        ...state,
+        data: [],
         loading: false,
         error: action.error,
       };

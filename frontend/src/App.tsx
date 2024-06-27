@@ -1,5 +1,5 @@
 import './App.css';
-import CandyList from './components/candy-list';
+import CandyList from './components/candy-list/candy-list';
 
 function App() {
 
