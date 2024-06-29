@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 100px 8fr;
   grid-template-columns: repeat(3, auto);
-  width: 80%;
+  width: 900px;
 `
 
 const CandyList = () => {
@@ -53,7 +53,7 @@ const CandyList = () => {
               display: "grid",
               gridArea: "2 / 1 / 3 / 4",
               height: 800,
-              width: 900,
+              width: "100%",
               backgroundColor: "white",
               borderRadius: 5,
               overflow: "auto",
