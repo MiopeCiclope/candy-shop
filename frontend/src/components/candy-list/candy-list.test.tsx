@@ -47,14 +47,14 @@ describe('CandyList Component', () => {
   afterAll(() => server.close())
 
   test('hide loading', async () => {
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());
   });
 
   test('render control buttons', async () => {
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());
 
@@ -64,7 +64,7 @@ describe('CandyList Component', () => {
   });
 
   test('fetches candy', async () => {
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());
 
@@ -83,7 +83,7 @@ describe('CandyList Component', () => {
       })
     )
 
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());
@@ -92,7 +92,7 @@ describe('CandyList Component', () => {
   });
 
   test('display aggregation by client', async () => {
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());
@@ -111,7 +111,7 @@ describe('CandyList Component', () => {
   });
 
   test('display aggregation by candy', async () => {
-    render(<CandyList />);
+    render(<CandyList aggregateKey={null} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/loading/i)).not.toBeInTheDocument());

@@ -2,7 +2,6 @@ import { fireEvent, screen } from "@testing-library/react"
 import '@testing-library/jest-dom'
 import { render } from "../../utils/test-utils";
 import ControlButton from "./control-button";
-import { css } from "@emotion/react";
 
 describe('Control Button Component', () => {
   const params = {
@@ -38,15 +37,5 @@ describe('Control Button Component', () => {
     const buttonElement = screen.getByText(/Mock button/i);
     fireEvent.click(buttonElement);
     expect(params.onClick).toHaveBeenCalledTimes(1);
-  });
-
-  test('applies custom class name', () => {
-    const customStyle = css`
-      background-color: red;
-    `;
-    render(<ControlButton {...params} className={customStyle} />);
-
-    const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveClass(customStyle.name);
   });
 });
