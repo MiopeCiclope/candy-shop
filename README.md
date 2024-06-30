@@ -7,6 +7,8 @@ Zimpler code test fetch data from api and display it.
 ### `docker-compose --env-file backend/.env up --build`
 
 Run Frontend and Backend in the same terminal
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+and [http://localhost:8081/api](http://localhost:8081/api/status) for API
 
 ## Frontend
 
@@ -51,7 +53,7 @@ Download packages
 
 ### `make dev`
 
-Build and run in [http://localhost:8081/api](http://localhost:8081/api)
+Build and run in [http://localhost:8081/api](http://localhost:8081/api/status)
 
 ### `make test`
 
